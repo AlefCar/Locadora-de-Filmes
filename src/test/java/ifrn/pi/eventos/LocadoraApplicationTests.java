@@ -1,10 +1,10 @@
-package ifrn.pi.eventos;
+package ifrn.pi.locadora;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EventosApplicationTests {
+class LocadoraApplicationTests {
 
 	@Test
 	void contextLoads() {
