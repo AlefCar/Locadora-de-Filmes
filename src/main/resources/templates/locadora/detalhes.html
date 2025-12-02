@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<title>Nowstálgico</title>
+
+<style>
+.card img {
+
+            height: 500px;
+            
+            object-fit: cover;
+
+            border-top-left-radius: 10px;
+
+            border-top-right-radius: 10px;
+
+        }
+</style>
+
+</head>
+<body>
+	<div th:replace="~{menu :: menu}"></div>
+
+	<div class="container">
+	
+	<h1>Detalhes do Filme</h1>
+
+<div class="row">
+
+            <div class="col s2 l3">
+
+                <div class="card">
+
+                    <div class="card-image">
+
+                        <img th:src="${filme.capa}">
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <p>Capa do Filme</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+  <div class="row">
+    <div class="col s12">
+       <div class="card">
+        <div class="card-content">
+          <span class="card-title">Filme</span>
+          <p><strong>Id: </strong><span th:text ="${filme.id}"> 1</span></p>
+           <p><strong>Nome: </strong><span th:text ="${filme.nome}">It a coisia</span></p>
+          <p><strong>Gênero: </strong><span th:text ="${filme.genero}">Terror</span></p>
+          <p><strong>Descrição: </strong><span th:text ="${filme.descricao}"> Filme de terror aterrorizante</span></p>
+          <p><strong>Nota: </strong><span th:text ="${filme.nota}"> 10.0</span></p>
+          <p><strong>Preço: </strong><span th:text ="${filme.preco}"> 10,50</span></p>
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+  </div>
+</body>
+</html>
