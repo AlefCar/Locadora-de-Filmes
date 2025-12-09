@@ -2,19 +2,37 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-
 </head>
 <body>
-	<nav th:fragment="menu" >
-		<div class="nav-wrapper container">
-			<a href="/" class="brand-logo">
-    <img src="/Nowstalgico.ico" alt="Logo" style="height:70px; vertical-align:middle; margin-right:10px;"></a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="/">Home</a></li>
-				<li><a href="/locadora/form">Adicionar Filmes</a></li>
-				
-			</ul>
-		</div>
-	</nav>
+
+<nav th:fragment="menu" class="indigo lighten-5">
+    <div class="nav-wrapper container">
+
+        <!-- LOGO + TEXTO -->
+        <a href="/" class="brand-logo" 
+           style="display:flex; align-items:center; color:black !important;">
+            <img src="/Nowstalgico.ico" 
+                 alt="Logo" 
+                 style="height:60px; margin-right:10px;">
+            Nowstálgico
+        </a>
+
+        <!-- LINKS À DIREITA -->
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+            <li><a href="/" style="color:black;">Home</a></li>
+
+            <!-- BOTÃO VISÍVEL APENAS PARA ADMIN -->
+            <li ><a href="/locadora/form" style="color:black;">Adicionar Filmes</a>
+            </li>
+
+            <li><a th:href="@{/login}" style="color:black;">Login</a></li>
+            <li><a th:href="@{/logout}" style="color:black;">Logout</a></li>
+
+        </ul>
+        
+    </div>
+</nav>
+
 </body>
 </html>

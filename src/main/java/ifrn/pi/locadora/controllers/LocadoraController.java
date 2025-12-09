@@ -2,6 +2,7 @@ package ifrn.pi.locadora.controllers;
 
 import ifrn.pi.locadora.models.Filme;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -86,4 +87,15 @@ public class LocadoraController {
 		return "redirect:/locadora";
 	}
 	
+	public class LoginController {
+		
+	@GetMapping("/login")
+	public String login() {
+		return "login/login";
+	}
+	}
+	@GetMapping ("/logout")
+	public String logout() {
+		return "login/logout.html";
+	}
 }

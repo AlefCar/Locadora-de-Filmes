@@ -2,74 +2,97 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-		<link rel="icon" href="/Nowstalgico.ico" />
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="icon" href="/Nowstalgico.ico" />
 <title>Nowstálgico</title>
 
 <style>
+
+/* --- NAVBAR: deixa o texto preto --- */
+nav.indigo.lighten-5 a,
+nav.indigo.lighten-5 ul li a {
+    color: black !important;
+    font-weight: bold;
+}
+
+/* --- Card de capa do filme --- */
 .card img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: block;
+}
 
-            height: 500px;
-            
-            object-fit: cover;
+/* --- Descrição grande sem quebrar --- */
+.descricao-filme {
+    white-space: normal;
+    text-align: justify;
+    line-height: 1.5;
+    font-size: 15px;
+}
 
-            border-top-left-radius: 10px;
-
-            border-top-right-radius: 10px;
-
-        }
 </style>
 
 </head>
 <body>
+
+    <!-- NAVBAR -->
 	<div th:replace="~{menu :: menu}"></div>
 
 	<div class="container">
-	
+
 	<h1>Detalhes do Filme</h1>
 
-<div class="row">
+	<div class="row">
 
-            <div class="col s2 l3">
+        <!-- CARD DA CAPA DO FILME -->
+        <div class="col s12 m4 l3">
+            <div class="card">
+                <div class="card-image">
+                    <img th:src="${filme.capa}">
+                </div>
+                <div class="card-content">
+                    <p>
+                        <strong><span th:text="${filme.nome}"></span></strong>
+                    </p>
+                </div>
+            </div>
+        </div>
 
-                <div class="card">
+        <!-- CARD DOS DETALHES -->
+        <div class="col s12 m8 l9">
+            <div class="card">
+                <div class="card-content">
 
-                    <div class="card-image">
+                    <span class="card-title">Filme</span>
 
-                        <img th:src="${filme.capa}">
+                    <p><strong>Id: </strong><span th:text="${filme.id}"></span></p>
+                    <p><strong>Nome: </strong><span th:text="${filme.nome}"></span></p>
+                    <p><strong>Gênero: </strong><span th:text="${filme.genero}"></span></p>
 
-                    </div>
+                    <!-- DESCRIÇÃO COM TEXTO GRANDE PERMITIDO -->
+                    <p><strong>Descrição: </strong>
+                        <span class="descricao-filme" th:text="${filme.descricao}">
+                        </span>
+                    </p>
 
-                    <div class="card-content">
-
-                        <p>Capa do Filme</p>
-
-                    </div>
+                    <p><strong>Nota: </strong><span th:text="${filme.nota}"></span></p>
+                    <p><strong>Preço: </strong><span th:text="${filme.preco}"></span></p>
 
                 </div>
-
             </div>
-
-  <div class="row">
-    <div class="col s12">
-       <div class="card">
-        <div class="card-content">
-          <span class="card-title">Filme</span>
-          <p><strong>Id: </strong><span th:text ="${filme.id}"> 1</span></p>
-           <p><strong>Nome: </strong><span th:text ="${filme.nome}">It a coisia</span></p>
-          <p><strong>Gênero: </strong><span th:text ="${filme.genero}">Terror</span></p>
-          <p><strong>Descrição: </strong><span th:text ="${filme.descricao}"> Filme de terror aterrorizante</span></p>
-          <p><strong>Nota: </strong><span th:text ="${filme.nota}"> 10.0</span></p>
-          <p><strong>Preço: </strong><span th:text ="${filme.preco}"> 10,50</span></p>
         </div>
-      </div>
-    </div>
-   </div>
-  </div>
-  </div>
+
+	</div>
+	</div>
+
 </body>
 </html>
