@@ -16,8 +16,7 @@
 
 <body>
 
-	<div th:replace="~{fragments/commons :: cabecalho}"></div>
-	<div th:replace="~{fragments/commons :: menu}"></div>
+
 
 	<div class="container">
 		<div class="row"></div>
@@ -47,9 +46,7 @@
 								<div class="input-field col s12">
 									<button class="waves-effect waves-light btn col s12" type="submit">Login</button>
 								</div>
-								<div class="center input-field col s12">
-									<a th:href="@{/usuarios/form}">Inscreva-se</a>
-								</div>
+							
 							</div>
 						</form>
 					</div>
@@ -71,7 +68,7 @@
 		});
 	</script>
 
-	<div th:replace="~{fragments/commons :: rodape}"></div>
+	
 </body>
 
 </html>
