@@ -8,6 +8,7 @@ import java.util.Optional;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,7 @@ public class LocadoraController {
 
 
 	
+	
 	@GetMapping("/form")
 	public ModelAndView form() {
 	    ModelAndView mv = new ModelAndView("locadora/formFilme");
@@ -34,7 +36,7 @@ public class LocadoraController {
 	    return mv;
 	}
 
-
+	
 	@PostMapping
 	public String salvar(Filme filme) {
 
@@ -43,7 +45,8 @@ public class LocadoraController {
 
 		return "redirect:/locadora";
 	}
-
+	
+	
 	@GetMapping
 	public ModelAndView listar() {
 		List<Filme> locadora = lr.findAll();
@@ -51,7 +54,7 @@ public class LocadoraController {
 		mv.addObject("locadora", locadora);
 		return mv;
 	}
-
+	
 	@GetMapping("/{id}/detalhes")
     public String detalhes(@PathVariable("id") Long id, Model model) {
         Filme filme = lr.findById(id).orElse(null);
@@ -59,6 +62,7 @@ public class LocadoraController {
         return "locadora/detalhes";
     }
 	
+	@PreAuthorize("hasRole('ATENDENTE')")
 	@GetMapping("/{id}/selecionar")
 	public ModelAndView selecionarEvento(@PathVariable Long id) {
 	    ModelAndView md = new ModelAndView();
@@ -74,7 +78,7 @@ public class LocadoraController {
 	    
 	    return md;
 	}
-	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/{id}/remover")
 	public String apagarEvento(@PathVariable Long id) {
 		
@@ -87,15 +91,5 @@ public class LocadoraController {
 		return "redirect:/locadora";
 	}
 	
-	public class LoginController {
-		
-	@GetMapping("/login")
-	public String login() {
-		return "login/login";
-	}
-	}
-	@GetMapping ("/logout")
-	public String logout() {
-		return "login/logout.html";
-	}
+	
 }

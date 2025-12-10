@@ -32,6 +32,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				
 				<tr th:each="l : ${locadora}">
 					<td th:text="${l.id}">1</td>
 					<td><a th:href="@{/locadora/{id}/detalhes(id=${l.id})}"><span
