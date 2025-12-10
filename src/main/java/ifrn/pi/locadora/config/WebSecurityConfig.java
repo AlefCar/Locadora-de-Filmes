@@ -15,6 +15,42 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class WebSecurityConfig {
 
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+        http
+            .csrf(csrf -> csrf.disable())  // IMPORTANTE PARA FORM POST FUNCIONAR
+            .authorizeHttpRequests(auth -> auth
+                    .requestMatchers("/", "/login", "/usuarios/form").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
+
+                    // LIBERA FORM DE FILMES PARA ADMIN
+                    .requestMatchers(HttpMethod.GET, "/locadora/form").hasRole("ADMIN")
+
+                    // LIBERA SALVAR FILMES PARA ADMIN
+                    .requestMatchers(HttpMethod.POST, "/locadora").hasRole("ADMIN")
+
+                    // LISTA FILMES — QUALQUER LOGADO
+                    .requestMatchers(HttpMethod.GET, "/locadora").authenticated()
+
+                    .anyRequest().authenticated()
+            )
+            .formLogin(form -> form
+                    .loginPage("/login")
+                    .permitAll()
+            )
+            .logout(logout -> logout.permitAll());
+
+        return http.build();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
@@ -38,3 +74,4 @@ public class WebSecurityConfig {
 	}
 
 }
+
