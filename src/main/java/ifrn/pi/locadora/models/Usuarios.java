@@ -64,11 +64,11 @@ public class Usuarios implements UserDetails{
 		this.email = email;
 	}
 
-	public String getcpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setcpf(String cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
@@ -101,4 +101,14 @@ public class Usuarios implements UserDetails{
 		return this.email;
 	}
 
+	@Override
+	public String toString() {
+		return "Usuarios [id=" + id + ", nome=" + nome + ", senha=" + senha + ", email=" + email + ", cpf=" + cpf
+				+ ", papeis=" + papeis + "]";
+	}
+
+	
+	
+	
+	
 }
