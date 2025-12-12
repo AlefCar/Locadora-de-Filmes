@@ -15,6 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class WebSecurityConfig {
 
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
@@ -43,3 +44,28 @@ public class WebSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
+
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+		http.authorizeHttpRequests( (autorize) -> autorize
+				.requestMatchers("/").permitAll()
+				.requestMatchers("/usuarios/form").permitAll()
+				.requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
+				.anyRequest().authenticated()
+			)
+			.formLogin((formLogin) -> formLogin
+				.loginPage("/login")
+				.permitAll()
+			).logout(logout -> logout.permitAll());
+
+		return http.build();
+	}
+	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
+}
+
