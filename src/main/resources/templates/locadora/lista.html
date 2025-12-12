@@ -41,10 +41,8 @@
 					<td th:text="${l.descricao}">filme de terror bla</td>
 					<td th:text="${l.nota}">10.0</td>
 					<td th:text="${l.preco}">10,50</td>
-					<td>
-						<a th:href="@{/locadora/{id}/selecionar(id=${l.id})}"><i class="material-icons">edit</i></a>
-						<a th:href="@{/locadora/{id}/remover(id=${l.id})}"> <i class="material-icons">delete</i></a>
-					</td>
+					<td sec:authorize="hasRole('ATENDENTE')"> <a th:href="@{/locadora/{id}/selecionar(id=${l.id})}"><i class="material-icons">edit</i></a> </td>
+					<td sec:authorize="hasRole('ATENDENTE')"><a th:href="@{/locadora/{id}/remover(id=${l.id})}"> <i class="material-icons">delete</i></a></td>
 				</tr>
 
 			</tbody>

@@ -23,14 +23,8 @@ public class WebSecurityConfig {
             .authorizeHttpRequests(auth -> auth
                     .requestMatchers("/", "/login", "/usuarios/form").permitAll()
                     .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
-
-                    // LIBERA FORM DE FILMES PARA ADMIN
-                    .requestMatchers(HttpMethod.GET, "/locadora/form").hasRole("ADMIN")
-
-                    // LIBERA SALVAR FILMES PARA ADMIN
-                    .requestMatchers(HttpMethod.POST, "/locadora").hasRole("ADMIN")
-
-                    // LISTA FILMES — QUALQUER LOGADO
+                    .requestMatchers(HttpMethod.GET, "/locadora/form").hasRole("ATENDENTE")
+                    .requestMatchers(HttpMethod.POST, "/locadora").hasRole("ATENDENTE")
                     .requestMatchers(HttpMethod.GET, "/locadora").authenticated()
 
                     .anyRequest().authenticated()
