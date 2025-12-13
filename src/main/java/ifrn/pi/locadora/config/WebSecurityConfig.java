@@ -14,37 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 @EnableMethodSecurity
 public class WebSecurityConfig {
-
-
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
-        http
-            .csrf(csrf -> csrf.disable())  // IMPORTANTE PARA FORM POST FUNCIONAR
-            .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/", "/login", "/usuarios/form").permitAll()
-                    .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
-                    .requestMatchers(HttpMethod.GET, "/locadora/form").hasRole("ATENDENTE")
-                    .requestMatchers(HttpMethod.POST, "/locadora").hasRole("ATENDENTE")
-                    .requestMatchers(HttpMethod.GET, "/locadora").authenticated()
-
-                    .anyRequest().authenticated()
-            )
-            .formLogin(form -> form
-                    .loginPage("/login")
-                    .permitAll()
-            )
-            .logout(logout -> logout.permitAll());
-
-        return http.build();
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-}
-
+	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 

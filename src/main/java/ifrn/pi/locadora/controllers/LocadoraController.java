@@ -90,6 +90,14 @@ public class LocadoraController {
 		}
 		return "redirect:/locadora";
 	}
-	
-	
+
+	@Controller
+	public class ComprarController {
+
+	    @GetMapping("/comprar")
+	    public String comprar() {
+	        return "/comprar.html";
+	    }
+	}
 }
+	

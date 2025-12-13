@@ -20,3 +20,4 @@ public class LoginController {
 		return "login/logout";
 	}
 
+}
