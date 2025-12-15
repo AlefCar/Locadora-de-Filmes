@@ -26,7 +26,7 @@
             <li sec:authorize="hasRole('ADMIN')"><a href="/locadora/form" style="color:black;">Adicionar Filmes</a></li>
 			 <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/usuarios}" style="color:black;">Usuários</a></li>
             
-            <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}" style="color:black;">Sair</a></li>
+            <li><a th:href="@{/logout}" style="color:black;">Sair</a></li>
 
         </ul>
         
