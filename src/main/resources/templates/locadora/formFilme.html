@@ -18,6 +18,11 @@
 
 		<form action="/locadora" method="post">
 		
+		<!-- Garante que o formulário que foi enviado pelo próprio site e por um usuário legítimo, serve para se proteger de ataques -->
+		<input type="hidden"
+           th:name="${_csrf.parameterName}"
+           th:value="${_csrf.token}" />
+		
 			<div>
 				 <input type="hidden" name="id" th:value="${filme.id}" readonly="readonly">
 			</div>
@@ -48,8 +53,7 @@
 			</div>
 			<div>
 
-
-     
+     <button class="waves-effect waves-light btn" type="submit">Salvar</button>
 	
 			</div>
 		</form>
