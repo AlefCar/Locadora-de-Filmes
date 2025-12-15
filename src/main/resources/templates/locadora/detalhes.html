@@ -13,14 +13,14 @@
 
 <style>
 
-/* --- NAVBAR: deixa o texto preto --- */
+
 nav.indigo.lighten-5 a,
 nav.indigo.lighten-5 ul li a {
     color: black !important;
     font-weight: bold;
 }
 
-/* --- Card de capa do filme --- */
+
 .card img {
     width: 100%;
     height: 500px;
@@ -31,7 +31,7 @@ nav.indigo.lighten-5 ul li a {
     display: block;
 }
 
-/* --- Descrição grande sem quebrar --- */
+
 .descricao-filme {
     white-space: normal;
     text-align: justify;
@@ -44,7 +44,7 @@ nav.indigo.lighten-5 ul li a {
 </head>
 <body>
 
-    <!-- NAVBAR -->
+
 	<div th:replace="~{menu :: menu}"></div>
 
 	<div class="container">
@@ -67,7 +67,7 @@ nav.indigo.lighten-5 ul li a {
             </div>
         </div>
 
-        <!-- CARD DOS DETALHES -->
+
         <div class="col s12 m8 l9">
             <div class="card">
                 <div class="card-content">
@@ -78,7 +78,7 @@ nav.indigo.lighten-5 ul li a {
                     <p><strong>Nome: </strong><span th:text="${filme.nome}"></span></p>
                     <p><strong>Gênero: </strong><span th:text="${filme.genero}"></span></p>
 
-                    <!-- DESCRIÇÃO COM TEXTO GRANDE PERMITIDO -->
+
                     <p><strong>Descrição: </strong>
                         <span class="descricao-filme" th:text="${filme.descricao}">
                         </span>
