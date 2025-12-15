@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ifrn.pi.locadora.models.Papel;
@@ -76,8 +77,29 @@ public class UsuarioController {
 			
 		}
 		md.setViewName("usuarios/edit");
-		md.addObject("usuario", optional.get());
+		md.addObject("usuarios", optional.get());
 		md.addObject("papeis", pr.findAll());
 		return md;
 	}
+	@PostMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
+	public String salvarPapeis(
+	        @PathVariable Long id,
+	        @RequestParam(required = false) List<Long> papeisIds
+	) {
+
+	    Usuarios usuarios = ur.findById(id)
+	            .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+	    List<Papel> papeis = pr.findAllById(
+	            papeisIds == null ? List.of() : papeisIds
+	    );
+
+	    usuarios.setPapeis(papeis);
+	    ur.save(usuarios);
+
+	    return "redirect:/usuarios";
+	}
+
+
 }

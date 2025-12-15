@@ -75,10 +75,13 @@ public class Usuarios implements UserDetails{
 	public List<Papel> getPapeis() {
 		return papeis;
 	}
+	
 
-	public void setPapeis(List<Papel> papeis) {
+
+	public void  setPapeis(List<Papel> papeis) {
 		this.papeis = papeis;
 	}
+	
 
 	
 	
