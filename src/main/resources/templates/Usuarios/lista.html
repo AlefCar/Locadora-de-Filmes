@@ -2,67 +2,79 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<!--Import Google Icon Font-->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!-- Compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-		media="screen,projection">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
 
-	<!--Let browser know website is optimized for mobile-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta charset="UTF-8">
-	<title>Security</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+          media="screen,projection">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <title>Lista de Usuários</title>
 </head>
 
 <body>
 
-	
+<div class="container">
 
-	<div class="container">
-		<div class="row">
-			<h3>Lista de Usuários</h3>
-		</div>
-		
-		<div class="row">
+    <div class="row">
+        <h3>Lista de Usuários</h3>
+    </div>
 
-			<table class="highlight">
+    <div class="row">
+        <table class="highlight">
 
-				<thead>
-					<tr>
-						<th>Id</th>						
-						<th>Nome</th>
-						<th>Email</th>
-						<th>CPF</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="u : ${usuarios}">
-						<td th:text="${u.id}">1</td>
-						<td><a th:href="@{/usuarios/{id}(id=${u.id})}"><span
-									th:text="${u.nome}">João Fulano</span></a></td>
-						<td th:text="${u.email}">Email</td>
-						<td th:text="${u.cpf}">CPF</td>
-					</tr>
-				</tbody>
-			</table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>CPF</th>
+            </tr>
+            </thead>
 
-		</div>
-	</div>
-	<!-- Compiled and minified JavaScript -->
-	<!-- Compiled and minified JavaScript -->
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			$('.sidenav').sidenav();
-		});
-		$(document).ready(function () {
-			$('select').formSelect();
-		});
-	</script>
+            <tbody>
+            <tr th:each="u : ${usuarios}">
+                <td th:text="${u.id}">1</td>
+                <td>
+                    <a th:href="@{/usuarios/{id}(id=${u.id})}">
+                        <span th:text="${u.nome}">João Fulano</span>
+                    </a>
+                </td>
+                <td th:text="${u.email}">Email</td>
+                <td th:text="${u.cpf}">CPF</td>
+            </tr>
+            </tbody>
 
-	
+        </table>
+    </div>
+
+    <!-- BOTÃO VOLTAR NO CANTO DIREITO -->
+    <div class="row right-align" style="margin-top: 30px;">
+        <a class="btn grey darken-1" th:href="@{/}">
+            <i class="material-icons left">arrow_back</i>
+            Voltar
+        </a>
+    </div>
+
+</div>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.sidenav').sidenav();
+    });
+</script>
+
 </body>
-
 </html>

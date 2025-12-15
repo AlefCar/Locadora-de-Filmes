@@ -15,6 +15,22 @@ public class Papel  implements GrantedAuthority{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Override
+	public boolean equals(Object o) {
+	    if (this == o) return true;
+	    if (!(o instanceof Papel)) return false;
+	    Papel papel = (Papel) o;
+	    return id != null && id.equals(papel.id);
+	}
+
+	@Override
+	public int hashCode() {
+	    return getClass().hashCode();
+	}
+
+	
+	
 	public Long getId() {
 		return id;
 	}
