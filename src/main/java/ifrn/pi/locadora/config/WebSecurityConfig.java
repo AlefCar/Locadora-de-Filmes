@@ -43,8 +43,6 @@ public class WebSecurityConfig {
 				// Permite envio de formulário (POST) para cadastro de usuários
 				.requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
 				
-				.requestMatchers("/locadora/**").permitAll()
-				
 				// Qualquer outra rota exige autenticação
 				.anyRequest().authenticated()
 			)
